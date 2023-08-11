@@ -29,6 +29,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
 
   return (
     <div id="city-search">
+      <label htmlFor="name-of-city">Name of city</label>
       <input
         type="text"
         className="city"
