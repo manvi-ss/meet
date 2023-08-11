@@ -105,6 +105,9 @@ const getToken = async (code) => {
         "/" +
         encodeCode
     );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
     const { access_token } = await response.json();
     access_token && localStorage.setItem("access_token", access_token);
