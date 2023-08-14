@@ -73,7 +73,7 @@ describe("<Event /> component", () => {
 
   test("render event start date", () => {
     expect(
-      EventComponent.queryByText(allEvents[0].created)
+      EventComponent.queryByText(new Date(allEvents[0].created).toUTCString())
     ).toBeInTheDocument();
   });
 
@@ -104,15 +104,13 @@ describe("<Event /> component", () => {
       EventComponent.container.querySelector(".details")
     ).toBeInTheDocument();
     expect(EventComponent.queryByText("Hide Details")).toBeInTheDocument();
-    expect(
-      EventComponent.querySelector("Show Details")
-    ).not.toBeInTheDocument();
+    expect(EventComponent.queryByText("Show Details")).not.toBeInTheDocument();
 
     await user.click(EventComponent.queryByText("Hide Details"));
     expect(
       EventComponent.container.querySelector(".details")
     ).not.toBeInTheDocument();
     expect(EventComponent.queryByText("Hide Details")).not.toBeInTheDocument();
-    expect(EventComponent.querySelector("Show Details")).toBeInTheDocument();
+    expect(EventComponent.queryByText("Show Details")).toBeInTheDocument();
   });
 });
