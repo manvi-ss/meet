@@ -100,8 +100,10 @@ describe("<CitySearch /> integration", () => {
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
 
-    const suggestionListItems =
-      within(CitySearchDOM).queryAllByRole("listitem");
-    expect(suggestionListItems.length).toBe(allLocations.length + 1);
+    await waitFor(() => {
+      const suggestionListItems =
+        within(CitySearchDOM).queryAllByRole("listitem");
+      expect(suggestionListItems.length).toBe(allLocations.length + 1);
+    });
   });
 });
