@@ -45,7 +45,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
         type="text"
         className="city"
         placeholder="Search for a city"
-        value={query}
+        value={query.trim()}
         onFocus={() => setShowSuggestions(true)}
         onChange={handleInputChanged}
       />
@@ -59,7 +59,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
             );
           })}
           <li key="See all cities" onClick={handleItemClicked}>
-            <b> See all cities </b>
+            <b>See all cities</b>
           </li>
         </ul>
       ) : null}
